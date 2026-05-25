@@ -519,26 +519,11 @@ export default function QuestionnaireApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 text-black text-slate-900 p-4 md:p-8">
-      <div className="max-w-3xl mx-auto space-y-6">
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Shared Questionnaire
-          </h1>
-          <p className="text-slate-600 text-sm md:text-base">
-            Rate each item from 1 (not interested) to 5 (very interested)
-          </p>
-        </div>
-
-        <Card className="bg-white border border-slate-200 rounded-3xl shadow-xl">
-          <CardContent className="p-6 space-y-6">
-            <div className="space-y-2">
-              <label className="text-sm text-slate-600">Your Name</label>
-              <Input
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 text-black p-4 md:p-8">
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
-                className="bg-white border-slate-300 text-slate-900"
+                className="bg-white border-slate-300 text-black"
               />
             </div>
 
@@ -571,7 +556,7 @@ export default function QuestionnaireApp() {
                       }
                     />
 
-                    <div className="flex justify-between text-xs text-slate-500">
+                    <div className="flex justify-between text-xs text-black">
                       <span>1</span>
                       <span>2</span>
                       <span>3</span>
@@ -589,7 +574,7 @@ export default function QuestionnaireApp() {
           <CardContent className="p-6 space-y-5">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Overall Interest Score
                 </div>
                 <div className="text-3xl font-bold">
@@ -599,11 +584,11 @@ export default function QuestionnaireApp() {
             </div>
 
             <div className="space-y-3">
-              <div className="text-sm text-slate-600">
+              <div className="text-sm text-black">
                 Shareable Link
               </div>
 
-              <div className="bg-slate-50 rounded-xl p-3 text-xs md:text-sm break-all text-slate-700 border border-slate-300">
+              <div className="bg-slate-50 rounded-xl p-3 text-xs md:text-sm break-all text-black border border-slate-300">
                 {shareUrl}
               </div>
 
