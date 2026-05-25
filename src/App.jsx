@@ -107,7 +107,7 @@ const questions = [
   'Spanking - Wooden paddles',
   'Spanking - (OTK) Over The Knee',
   'Whipping - Belt',
-  'Whipping - Cat o' 9 tails',
+  'Whipping - Cat o 9 tails',
   'Whipping - Flogger',
   'Whipping - Single tail',
   'Wrestling',
