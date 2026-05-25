@@ -520,26 +520,6 @@ export default function QuestionnaireApp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 text-black p-4 md:p-8">
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your name"
-                className="bg-white border-slate-300 text-black"
-              />
-            </div>
-
-            <div className="space-y-6">
-              {questions.map((question, index) => {
-                const key = `q${index}`;
-
-                return (
-                  <div
-                    key={key}
-                    className="space-y-3 border-b border-slate-200 pb-5"
-                  >
-                    <div className="flex justify-between gap-4 items-center">
-                      <h2 className="text-sm md:text-base font-medium leading-snug">
-                        {question}
-                      </h2>
 
                       <div className="text-lg font-bold min-w-[24px] text-right text-indigo-600">
                         {answers[key]}
