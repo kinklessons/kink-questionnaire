@@ -522,7 +522,7 @@ export default function QuestionnaireApp() {
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 text-black p-4 md:p-8">
       <div className="max-w-3xl mx-auto space-y-6">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-black" style="color:black;">
+          <h1 className="text-4xl font-bold tracking-tight text-black">
             Shared Questionnaire
           </h1>
           <p className="text-slate-600 text-sm md:text-base">
@@ -552,7 +552,7 @@ export default function QuestionnaireApp() {
                     className="space-y-3 border-b border-slate-200 pb-5"
                   >
                     <div className="flex justify-between gap-4 items-center">
-                      <h2 className="text-sm md:text-base font-medium leading-snug text-black" style="color:black;">
+                      <h2 className="text-sm md:text-base font-medium leading-snug text-black">
                         {question}
                       </h2>
 
