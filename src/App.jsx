@@ -523,10 +523,10 @@ export default function QuestionnaireApp() {
       <div className="max-w-3xl mx-auto space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold tracking-tight text-black" style={{ color: "#000000" }}>
-            Shared Questionnaire
+            Shared Kink Questionnaire
           </h1>
           <p className="text-slate-600 text-sm md:text-base">
-            Rate each item from 1 (not interested) to 5 (very interested)
+            Rate each item from 1 (Hard Limit) to 5 (very interested)
           </p>
         </div>
 
