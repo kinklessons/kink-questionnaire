@@ -996,7 +996,7 @@ export default function QuestionnaireApp() {
             </div>
 
             <div className="space-y-6">
-              {activeQuestions.map((question, index) => {
+              {activeQuestions.map(question, index) => {
                 const key = `q${index}`;
 
                 return (
