@@ -961,7 +961,7 @@ answers,
 ```
 const encoded = encodeAnswers(payload);
 
-return `${window.location.origin}${window.location.pathname}?data=${encoded}`;
+return '${window.location.origin}${window.location.pathname}?data=${encoded}';
 ```
 
 }, [answers, name, qversion]);
