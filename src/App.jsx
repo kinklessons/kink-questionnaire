@@ -857,6 +857,7 @@ export default function QuestionnaireApp() {
     return initial;
   }, [activeQuestions]);
 
+  const [qversion, setVersion] = useState({});
   const [answers, setAnswers] = useState({});
   const [name, setName] = useState("");
   const [copied, setCopied] = useState(false);
@@ -996,7 +997,7 @@ export default function QuestionnaireApp() {
             </div>
 
             <div className="space-y-6">
-              {activeQuestions.map(question, index) => {
+              {activeQuestions.map((question, index) => {
                 const key = `q${index}`;
 
                 return (
