@@ -4,7 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Copy, Check } from "lucide-react";
+import { version } from "vite";
 
+const STORAGE_KEY = "kink-questionnaire-data";
+const STORAGE_VERSION = "2.0";
 const questions = [
   'Arm and leg sleeves ("armbinders")',
   'Breast bondage',
@@ -448,6 +451,365 @@ const questions = [
   'Wooden paddles'
 ];
 
+const questionsv2 = [
+    'Arm and leg sleeves ("armbinders")',
+  'Breast bondage',
+  'Blindfolds',
+  'Bondage - Light',
+  'Bondage - Heavy',
+  'Bondage - All day/multi day',
+  'Cages/Cells/Closets (Locked inside of)',
+  'Chains (bound with)',
+  'Chastity device/belts',
+  'Collars - Worn in private',
+  'Collars - Worn in public',
+  'Cuffs - Leather',
+  'Cuffs - Metal',
+  'Cuffs - Handcuff Style',
+  'Ear plugs (sound deprivation)',
+  'Gags - Ball',
+  'Gags - Bit',
+  'Gags - Cloth',
+  'Gags - Inflatable',
+  'Gags - Phallic',
+  'Gags - Ring',
+  'Gags - Tape',
+  'Harnessing - Leather',
+  'Harnessing - Rope',
+  'Hoods (full head)',
+  'Immobilisation',
+  'Leash',
+  'Leather restraints',
+  'Manacles & Irons',
+  'Mummification',
+  'Muzzles',
+  'Rope bondage - Simple',
+  'Rope bondage - Intricate (Shibari)',
+  'Spreader Bars',
+  'Stocks (head & hands)',
+  'Straight jackets',
+  'Suspension - Upright',
+  'Suspension - Horizontal',
+  'Suspension - Inverted',
+  'Sleep sacks',
+  'Chamber pot use',
+  'Creampie',
+  'Cum - In ass',
+  'Cum - In mouth',
+  'Cum - In vagina',
+  'Cum - On body',
+  'Cutting - Blood play',
+  'Golden showers (urinate on)',
+  'Human Toilet',
+  'Injections (Saline)',
+  'Milking (made to produce breast milk)',
+  'Pearl necklace (cum on chest/throat)',
+  'Pearl shower (cum on face)',
+  'Rimming (oral/anal play)',
+  'Scat (brown showers)',
+  'Swallowing semen',
+  'Swallowing urine',
+  'Boot worship',
+  'Cock worship',
+  'Corsets',
+  'Cross dressing',
+  'Diapers',
+  'Foot worship',
+  'Gas Masks',
+  'High heels (wearing)',
+  'High heel worship',
+  'Leather (wearing)',
+  'Lingerie (wearing)',
+  'Pussy worship',
+  'Rubber/latex clothing (wearing)',
+  'Slutty clothing',
+  'Spandex clothing',
+  'Forced dressing',
+  'Forced feminization',
+  'Forced homosexuality',
+  'Forced masturbation',
+  'Forced nudity',
+  'Forced servitude',
+  'Humiliation in private',
+  'Humiliation in public',
+  'Lecturing for misbehaviors',
+  'Shaving head hair',
+  'Shaving or depilation of body hair',
+  'Standing in corner (punishment)',
+  'Verbal humiliation',
+  'Breast whipping',
+  'Caning - English',
+  'Caning - Sensation',
+  'Face slapping',
+  'Punching',
+  'Pussy punching',
+  'Pussy kicking',
+  'Pussy spanking (smacking)',
+  'Pussy whipping',
+  'Riding crops',
+  'Spanking - Hairbrush',
+  'Spanking - Hand',
+  'Spanking - Leather slappers',
+  'Spanking - Wooden paddles',
+  'Spanking - (OTK) Over The Knee',
+  'Whipping - Belt',
+  'Whipping - Cat o 9 tails',
+  'Whipping - Flogger',
+  'Whipping - Single tail',
+  'Wrestling',
+  'Fantasy gang rape',
+  'Group play - Multiple men "gang bang"',
+  'Group play - Multiple women & men',
+  'Group play - Orgy',
+  'Shared (given to another only temp)',
+  'Swapping (with one other couple)',
+  'Swinging (multiple couples)',
+  'Branding',
+  'Scarification (cutting, making scars)',
+  'Tattooing (inking)',
+  'Abandonment (fantasy)',
+  'Age play (not pedophilia)',
+  'Animal roleplay',
+  'Auctioned for charity',
+  'Fear play',
+  'Human puppy-dog play',
+  'Infantilism (baby play)',
+  'Initiation rites',
+  'Interrogations',
+  'Kidnapping',
+  'Medical scenes',
+  'Name change',
+  'Pony play',
+  'Psych ward play',
+  'Prison scenes',
+  'Prostitution fantasy',
+  'Religious scenes',
+  'Schoolroom scenes',
+  'Switching roles (Top/bottom)',
+  'Total Power Exchange (TPE)',
+  'Other roleplaying',
+  'Abrasion (scraping, sanding)',
+  'Asphyxiation',
+  'Ball stretching',
+  'Biting (being bitten)',
+  'Beating hard',
+  'Beating soft',
+  'Breath control (Choking)',
+  'Breath control (Mild restriction)',
+  'Clamps - Labia/clit area',
+  'Clothespins',
+  'Dilation',
+  'Electricity - Internal (egg or probe)',
+  'Electricity - TENS unit',
+  'Electricity - Violet Wand',
+  'Enemas - For cleansing',
+  'Enemas - Retention/training',
+  'Finger claws',
+  'Fire cupping',
+  'Fire play',
+  'Hair pulling',
+  'Hot wax - Dripping on body/genitals',
+  'Hot waxing - Hair removal',
+  'Ice cubes',
+  'Kicking',
+  'Knife play (blood drawn)',
+  'Knife play (no blood)(sensation)',
+  'Needle play',
+  'Nipple clamps',
+  'Nipple piercing',
+  'Nipple play - Pulls, Tugs, Twists',
+  'Pain - Mild',
+  'Pain - Severe',
+  'Piercing (permanant)',
+  'Piercing (temporary)',
+  'Punishment scene',
+  'Riding the horse (crotch torture)',
+  'Scratching',
+  'Sensory deprivation',
+  'Sleep deprivation',
+  'Strapping (full body beating)',
+  'Suction cups',
+  'Teasing',
+  'Tickling',
+  'Vampire gloves',
+  'Water torture (waterboarding)',
+  'Wartenburg pinwheel',
+  'Zippers - Clothespins',
+  'Zippers - Clamps',
+  'Zippers - Needles',
+  'Bathroom use control (permission)',
+  'Begging',
+  'Chauffeuring (driving)',
+  'Chores (domestic service/housework)',
+  'Chosen clothing for',
+  'Chosen food for',
+  'Contract slave',
+  'Daily diary',
+  'Exercise - Forced/required',
+  'Erotic dancing',
+  'Eye contact restrictions',
+  'Following orders',
+  'Gor Slave Training (positions)',
+  'Harems (serving with other subs)',
+  'Hypnotism',
+  'Kneeling',
+  'Manicures',
+  'Mantra and meditation',
+  'Massage',
+  'Pedicures & foot massages',
+  'Personality modification',
+  'Phone sex',
+  'Rituals',
+  'Serving as a maid',
+  'Serving as furniture',
+  'Serving as art',
+  'Serving other Doms (supervised only)',
+  'Speech restrictions (when, what, to whom)',
+  'Uniform (wearing)',
+  'Wearing symbolic jewelry',
+  'Weight control',
+  'Anal beads',
+  'Anal play',
+  'Anal plugs - Small',
+  'Anal plugs - Medium',
+  'Anal plugs - Large',
+  'Anal plugs - Public, under clothes',
+  'Anal sex',
+  'Bestiality (sex with animals)',
+  'Breast fucking',
+  'Catheterization',
+  'Cunnilingus (giving oral to a woman)',
+  'Cunnilingus (receiving oral)',
+  'Dildos - Anal',
+  'Dildos - Oral',
+  'Dildos - Vaginal',
+  'Double penetration',
+  'Fantasy rape play',
+  'Fisting - Vaginal',
+  'Genital sex',
+  'Masturbation',
+  'Orgasm control',
+  'Orgasm denial',
+  'Sounding',
+  'Speculums',
+  'Strap-on-dildos (sucking on)',
+  'Strap-on-dildos (penetrated by)',
+  'Strap-on-dildos (wearing)',
+  'Triple penetration',
+  'Vibrator - Anal',
+  'Vibrator - External genital',
+  'Vibrator - Internal genital',
+  'Examinations',
+  'Exhibitionism (friends)',
+  'Forced nudity (private)',
+  'Forced nudity (around others)',
+  'Modeling for erotic photos',
+  'Outdoor scenes',
+  'Video (watching others)',
+  'Video (recordings of you)',
+  'Voyeurism (watching others)',
+  'Abrasion',
+  'Age Play',
+  'Anal Plugs (small)',
+  'Anal Plugs (large)',
+  'Aromas',
+  'Bathroom use control',
+  'Beating (soft)',
+  'Beating (hard)',
+  'Blindfolding',
+  'Breath control',
+  'Bondage (light)',
+  'Bondage (multi-day)',
+  'Brown showers (scat)',
+  'Castration fantasy',
+  'Cattle prod (electrical toy)',
+  'Cells/Closets (locked inside of)',
+  'Choking',
+  'Cock rings/straps',
+  'Collars (worn in private)',
+  'Corsets (wearing casually)',
+  'Corsets (trained waist reduction)',
+  'Cuffs (metal)',
+  'Diapers (wearing)',
+  'Dildos',
+  'Enforced chastity',
+  'Erotic Dance (for audience)',
+  'Exercise (forced/required)',
+  'Fisting (vaginal)',
+  'Forced bedwetting',
+  'Forced eating',
+  'Forced smoking',
+  'Full head hoods',
+  'Gags (cloth)',
+  'Gags (inflatable)',
+  'Gags (phallic)',
+  'Gags (tape)',
+  'Gates of Hell (male)',
+  'Gun play',
+  'Hair brush spankings',
+  'Hand Jobs (receiving)',
+  'Harems (serving w/other subs)',
+  'Harnessing (leather)',
+  'Harnessing (rope)',
+  'Having clothing chosen for you',
+  'Head (give fellatio/cunnilingus)',
+  'Head (rcv fellation/cunnilingus)',
+  'Injections',
+  'Intricate (Japanese)',
+  'Knife play',
+  'Leather Clothing',
+  'Lectures for misbehavior',
+  'Licking (non-sexual)',
+  'Manacles and Irons',
+  'Massage (receiving)',
+  'Oral/anal play (rimming)',
+  'Pain (mild)',
+  'Persona training (in scene)',
+  'Phone sex (serving Dom’s friends)',
+  'Piercing (temporary, play-pierce)',
+  'Plastic surgery',
+  'Prostitution (public pretense)',
+  'Prostitution (actual)',
+  'Public exposure',
+  'Restrictive rules on',
+  'behavior',
+  'Rubber/latex clothing',
+  'Rope body harness',
+  'Saran wrap',
+  'Scratching - getting',
+  'Serving as a toilet (feces)',
+  'Shaving (body hair)',
+  'Slutty clothing (public)',
+  'Spanking',
+  'Speculums (anal)',
+  'Speculums (vaginal)',
+  'Spitting',
+  'Standing in corner',
+  'Stocks',
+  'Strapping (full body',
+  'beating)',
+  'Suspension (upright)',
+  'Suspension (inverted)',
+  'Supplying new partners for Dom',
+  'Swallowing feces',
+  'Tampon training (in ass)',
+  'Tattooing',
+  'TENS unit (electrical toy)',
+  'Thumb cuffs (metal)',
+  'Urethral Sounds (metal rods)',
+  'Uniforms',
+  'Including others',
+  'Vaginal dildo',
+  'Vibrator on genitals',
+  'Violet wand (electrical toy)',
+  'Water torture',
+  'Waxing (hair removal)',
+  'Weight gain (forced)',
+  'Weight loss (forced)',
+  'Whipping',
+  'Wooden paddles'
+]
+
 function encodeAnswers(obj) {
   return btoa(JSON.stringify(obj));
 }
@@ -461,17 +823,42 @@ function decodeAnswers(str) {
 }
 
 export default function QuestionnaireApp() {
-  const defaultAnswers = useMemo(() => {
-    const initial = {};
-    questions.forEach((q, i) => {
-      initial[`q${i}`] = 3;
-    });
-    return initial;
-  }, []);
 
+  const [qversion, setVersion] = useState(STORAGE_VERSION);
   const [answers, setAnswers] = useState(defaultAnswers);
   const [name, setName] = useState("");
   const [copied, setCopied] = useState(false);
+  const hasSharedData = new URLSearchParams(window.location.search).has("data");
+
+  const activeQuestions = useMemo(() => {
+    if (qversion === "2.0") {
+      return questionsv2;
+    }
+
+    if (qversion === "1.0") {
+      return questions;
+    }
+
+    // No explicit version
+
+    if (hasSharedData) {
+      // preserve compatibility with old shared links
+      return questions;
+    }
+
+    // new questionnaires default to v2
+    return questionsv2;
+  }, [qversion, hasSharedData]);
+
+  const defaultAnswers = useMemo(() => {
+    const initial = {};
+
+    activeQuestions.forEach((q, i) => {
+      initial[`q${i}`] = 3;
+    });
+
+    return initial;
+  }, [activeQuestions]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -484,8 +871,40 @@ export default function QuestionnaireApp() {
         setAnswers(decoded.answers || defaultAnswers);
         setName(decoded.name || "");
       }
+      return;
     }
+  // OTHERWISE LOAD LOCAL DATA
+  const saved = localStorage.getItem(STORAGE_KEY);
+  const qversion = localStorage.getItem(STORAGE_VERSION);
+
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      setVersion(parsed.qversion || qversion)
+      setAnswers(parsed.answers || defaultAnswers);
+      setName(parsed.name || "");
+    } catch (err) {
+      console.error("Failed to parse local storage", err);
+    }
+  }
   }, [defaultAnswers]);
+
+  // Auto-save only when NOT viewing shared data
+  useEffect(() => {
+    if (hasSharedData) return;
+
+    const payload = {
+      name,
+      answers,
+      qversion,
+      savedAt: Date.now(),
+    };
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(payload)
+    );
+  }, [answers, name, hasSharedData, qversion]);
 
   const handleChange = (key, value) => {
     setAnswers((prev) => ({
@@ -508,7 +927,7 @@ export default function QuestionnaireApp() {
   const compatibilityScore = useMemo(() => {
     const values = Object.values(answers);
     const total = values.reduce((a, b) => a + b, 0);
-    return Math.round((total / (questions.length * 5)) * 100);
+    return Math.round((total / (activeQuestions.length * 5)) * 100);
   }, [answers]);
 
   const copyLink = async () => {
@@ -543,7 +962,7 @@ export default function QuestionnaireApp() {
             </div>
 
             <div className="space-y-6">
-              {questions.map((question, index) => {
+              {activeQuestions.map((question, index) => {
                 const key = `q${index}`;
 
                 return (
