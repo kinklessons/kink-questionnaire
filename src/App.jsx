@@ -822,166 +822,147 @@ function decodeAnswers(str) {
 }
 
 export default function QuestionnaireApp() {
-const hasSharedData = useMemo(() => {
-return new URLSearchParams(window.location.search).has("data");
-}, []);
+  const hasSharedData = useMemo(() => {
+    return new URLSearchParams(window.location.search).has("data");
+  }, []);
 
-const [qversion, setVersion] = useState(null);
+  const [qversion, setVersion] = useState(null);
 
-const activeQuestions = useMemo(() => {
-if (qversion === "2.0") {
-return questionsv2;
-}
-
-```
-if (qversion === "1.0") {
-  return questions;
-}
-
-// No explicit version set
-
-if (hasSharedData) {
-  // Shared URLs without version are assumed legacy
-  return questions;
-}
-
-// New questionnaires default to v2
-return questionsv2;
-```
-
-}, [qversion, hasSharedData]);
-
-const defaultAnswers = useMemo(() => {
-const initial = {};
-
-```
-activeQuestions.forEach((q, i) => {
-  initial['q${i}'] = 3;
-});
-
-return initial;
-```
-
-}, [activeQuestions]);
-
-const [answers, setAnswers] = useState({});
-const [name, setName] = useState("");
-const [copied, setCopied] = useState(false);
-
-// Load questionnaire
-useEffect(() => {
-const params = new URLSearchParams(window.location.search);
-const encoded = params.get("data");
-
-```
-// Shared URL takes precedence
-if (encoded) {
-  const decoded = decodeAnswers(encoded);
-
-  if (decoded) {
-    if (decoded.version) {
-      setVersion(decoded.version);
+  const activeQuestions = useMemo(() => {
+    if (qversion === "2.0") {
+      return questionsv2;
     }
 
-    setAnswers(decoded.answers || {});
-    setName(decoded.name || "");
-  }
+    if (qversion === "1.0") {
+      return questions;
+    }
 
-  return;
-}
+    // No explicit version set
+    if (hasSharedData) {
+      // Shared URLs without version are assumed legacy
+      return questions;
+    }
 
-// Local questionnaire
-const saved = localStorage.getItem(STORAGE_KEY);
+    // New questionnaires default to v2
+    return questionsv2;
+  }, [qversion, hasSharedData]);
 
-if (saved) {
-  try {
-    const parsed = JSON.parse(saved);
+  const defaultAnswers = useMemo(() => {
+    const initial = {};
 
-    setVersion(parsed.qversion || STORAGE_VERSION);
-    setAnswers(parsed.answers || {});
-    setName(parsed.name || "");
-  } catch (err) {
-    console.error("Failed to parse local storage", err);
-  }
+    activeQuestions.forEach((q, i) => {
+      initial[`q${i}`] = 3;
+    });
 
-  return;
-}
+    return initial;
+  }, [activeQuestions]);
 
-// Brand new questionnaire
-setVersion(STORAGE_VERSION);
-setAnswers(defaultAnswers);
-```
+  const [answers, setAnswers] = useState({});
+  const [name, setName] = useState("");
+  const [copied, setCopied] = useState(false);
 
-}, []);
+  // Load questionnaire
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const encoded = params.get("data");
 
-// When question set changes and answers are empty,
-// initialize defaults for that version.
-useEffect(() => {
-if (Object.keys(answers).length === 0) {
-setAnswers(defaultAnswers);
-}
-}, [defaultAnswers]);
+    // Shared URL takes precedence
+    if (encoded) {
+      const decoded = decodeAnswers(encoded);
 
-// Auto-save only when not viewing shared data
-useEffect(() => {
-if (hasSharedData) return;
+      if (decoded) {
+        if (decoded.version) {
+          setVersion(decoded.version);
+        }
 
-```
-if (!qversion) return;
+        setAnswers(decoded.answers || {});
+        setName(decoded.name || "");
+      }
 
-const payload = {
-  name,
-  answers,
-  qversion,
-  savedAt: Date.now(),
-};
+      return;
+    }
 
-localStorage.setItem(
-  STORAGE_KEY,
-  JSON.stringify(payload)
-);
-```
+    // Local questionnaire
+    const saved = localStorage.getItem(STORAGE_KEY);
 
-}, [answers, name, qversion, hasSharedData]);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
 
-const handleChange = (key, value) => {
-setAnswers((prev) => ({
-...prev,
-[key]: value,
-}));
-};
+        setVersion(parsed.qversion || STORAGE_VERSION);
+        setAnswers(parsed.answers || {});
+        setName(parsed.name || "");
+      } catch (err) {
+        console.error("Failed to parse local storage", err);
+      }
 
-const shareUrl = useMemo(() => {
-const payload = {
-version: qversion,
-name,
-answers,
-};
+      return;
+    }
 
-```
-const encoded = encodeAnswers(payload);
+    // Brand new questionnaire
+    setVersion(STORAGE_VERSION);
+    setAnswers(defaultAnswers);
+  }, []);
 
-return '${window.location.origin}${window.location.pathname}?data=${encoded}';
-```
+  // When question set changes and answers are empty,
+  // initialize defaults for that version.
+  useEffect(() => {
+    if (Object.keys(answers).length === 0) {
+      setAnswers(defaultAnswers);
+    }
+  }, [defaultAnswers]);
 
-}, [answers, name, qversion]);
+  // Auto-save only when not viewing shared data
+  useEffect(() => {
+    if (hasSharedData) return;
+    if (!qversion) return;
 
-const compatibilityScore = useMemo(() => {
-const values = Object.values(answers);
+    const payload = {
+      name,
+      answers,
+      qversion,
+      savedAt: Date.now(),
+    };
 
-```
-const total = values.reduce(
-  (sum, value) => sum + Number(value),
-  0
-);
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(payload)
+    );
+  }, [answers, name, qversion, hasSharedData]);
 
-return Math.round(
-  (total / (activeQuestions.length * 5)) * 100
-);
-```
+  const handleChange = (key, value) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
 
-}, [answers, activeQuestions]);
+  const shareUrl = useMemo(() => {
+    const payload = {
+      version: qversion,
+      name,
+      answers,
+    };
 
+    const encoded = encodeAnswers(payload);
+
+    return `${window.location.origin}${window.location.pathname}?data=${encoded}`;
+  }, [answers, name, qversion]);
+
+  const compatibilityScore = useMemo(() => {
+    const values = Object.values(answers);
+
+    const total = values.reduce(
+      (sum, value) => sum + Number(value),
+      0
+    );
+
+    return Math.round(
+      (total / (activeQuestions.length * 5)) * 100
+    );
+  }, [answers, activeQuestions]);
+
+  // Rest of component continues here...
 
   const copyLink = async () => {
     await navigator.clipboard.writeText(shareUrl);
