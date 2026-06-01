@@ -860,6 +860,7 @@ export default function QuestionnaireApp() {
   const [answers, setAnswers] = useState({});
   const [name, setName] = useState("");
   const [copied, setCopied] = useState(false);
+  const [initialized, setInitialized] = useState(false);
 
   // Load questionnaire
   useEffect(() => {
@@ -874,11 +875,10 @@ export default function QuestionnaireApp() {
         if (decoded.version) {
           setVersion(decoded.version);
         }
-
         setAnswers(decoded.answers || {});
         setName(decoded.name || "");
       }
-
+      setInitialized(true);
       return;
     }
 
@@ -896,21 +896,23 @@ export default function QuestionnaireApp() {
         console.error("Failed to parse local storage", err);
       }
 
+      setInitialized(true);
       return;
     }
 
     // Brand new questionnaire
     setVersion(STORAGE_VERSION);
     setAnswers(defaultAnswers);
+    setInitialized(true);
   }, []);
 
   // When question set changes and answers are empty,
   // initialize defaults for that version.
-  useEffect(() => {
-    if (Object.keys(answers).length === 0) {
-      setAnswers(defaultAnswers);
-    }
-  }, [defaultAnswers]);
+  //useEffect(() => {
+  //  if (Object.keys(answers).length === 0) {
+  //    setAnswers(defaultAnswers);
+  //  }
+  //}, [defaultAnswers]);
 
   // Auto-save only when not viewing shared data
   useEffect(() => {
@@ -1010,12 +1012,12 @@ export default function QuestionnaireApp() {
                       </h2>
 
                       <div className="text-lg font-bold min-w-[24px] text-right text-indigo-600">
-                        {answers[key]}
+                        {answers[key] ?? 3}
                       </div>
                     </div>
 
                     <Slider
-                      value={[answers[key]]}
+                      value={[answers[key] ?? 3]}
                       min={1}
                       max={5}
                       step={1}
