@@ -857,7 +857,6 @@ export default function QuestionnaireApp() {
     return initial;
   }, [activeQuestions]);
 
-  const [qversion, setVersion] = useState({});
   const [answers, setAnswers] = useState({});
   const [name, setName] = useState("");
   const [copied, setCopied] = useState(false);
