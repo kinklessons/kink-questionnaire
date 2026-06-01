@@ -856,7 +856,7 @@ const initial = {};
 
 ```
 activeQuestions.forEach((q, i) => {
-  initial[`q${i}`] = 3;
+  initial['q${i}'] = 3;
 });
 
 return initial;
