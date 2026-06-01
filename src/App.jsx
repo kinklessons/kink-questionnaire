@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Copy, Check } from "lucide-react";
-import { version } from "vite";
 
 const STORAGE_KEY = "kink-questionnaire-data";
 const STORAGE_VERSION = "2.0";
