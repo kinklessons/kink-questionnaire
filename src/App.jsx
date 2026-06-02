@@ -991,13 +991,12 @@ export default function QuestionnaireApp() {
          </ul>
           </p><p></p>
           <p>
-            <span class="kink-header">The purpose of this questionnaire is to share your kinks with your partner.</span>
+            <span class="kink-header">The purpose of this questionnaire is to share your kinks with your partner.</span></p>
             <div class="kink-text">
-            </p><p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
+            <p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
             </p><p>The information from your survey is stored locally on your device. 
-            </p><p>No information is store on any servers. There is no tracking on this page.
+            </p><p>No information is store on any servers. There is no tracking on this page.</p>
             </div>
-         </p>
         </div>
 
         <Card className="bg-white border border-slate-200 rounded-3xl shadow-xl">
