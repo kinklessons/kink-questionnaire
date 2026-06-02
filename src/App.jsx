@@ -983,6 +983,12 @@ export default function QuestionnaireApp() {
           <p className="text-slate-600 text-sm md:text-base">
             Rate each item from 1 (Hard Limit) to 5 (very interested)
           </p>
+          <p>
+            The purpose of this questionnaire is to share your kinks with your partner. 
+            </p><p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
+            </p><p>The information from your survey is stored locally on your device. 
+            </p><p>No information is store on any servers. There is no tracking on this page.
+         </p>
         </div>
 
         <Card className="bg-white border border-slate-200 rounded-3xl shadow-xl">
