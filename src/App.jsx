@@ -851,7 +851,7 @@ export default function QuestionnaireApp() {
     const initial = {};
 
     activeQuestions.forEach((q, i) => {
-      initial[`q${i}`] = 3;
+      initial[`q${i}`] = 1;
     });
 
     return initial;
@@ -1018,12 +1018,12 @@ export default function QuestionnaireApp() {
                       </h2>
 
                       <div className="text-lg font-bold min-w-[24px] text-right text-indigo-600">
-                        {answers[key] ?? 3}
+                        {answers[key] ?? 1}
                       </div>
                     </div>
 
                     <Slider
-                      value={[answers[key] ?? 3]}
+                      value={[answers[key] ?? 1]}
                       min={1}
                       max={5}
                       step={1}
