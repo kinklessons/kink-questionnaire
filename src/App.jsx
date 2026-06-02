@@ -981,8 +981,15 @@ export default function QuestionnaireApp() {
             Shared Kink Questionnaire
           </h1>
           <p className="text-slate-600 text-sm md:text-base">
-            Rate each item from 1 (Hard Limit) to 5 (very interested)
-          </p>
+            Rate each item from:
+	 <ul>
+           <li> 1 - Hard Limit - absolulely not under any circumstances</li>
+           <li> 2 - Soft Limit - No desire to do this activity and but may permit if partner really wanted to do it </li>
+           <li> 3 - Willing do do this activity but has no special appeal to you </li>
+           <li> 4 - You like doing this activity and would like to experience it on a regular basis </li>
+           <li> 5 - Is a wild turn-on for you and you would like it as often as possible <li>
+         </ul>
+          </p><p></p>
           <p>
             The purpose of this questionnaire is to share your kinks with your partner. 
             </p><p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
