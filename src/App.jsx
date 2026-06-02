@@ -980,9 +980,9 @@ export default function QuestionnaireApp() {
           <h1 className="text-4xl font-bold tracking-tight text-black" style={{ color: "#000000" }}>
             Shared Kink Questionnaire
           </h1>
-          <p className="text-slate-600 text-sm md:text-base">
-            Rate each item from:
-	 <ul>
+          <p>
+            <div class="kink-header">Rate each item from:</div>
+	 <ul class="kink-list">
            <li> 1 - Hard Limit - absolulely not under any circumstances</li>
            <li> 2 - Soft Limit - No desire to do this activity and but may permit if partner really wanted to do it </li>
            <li> 3 - Willing do do this activity but has no special appeal to you </li>
@@ -991,10 +991,12 @@ export default function QuestionnaireApp() {
          </ul>
           </p><p></p>
           <p>
-            The purpose of this questionnaire is to share your kinks with your partner. 
+            <span class="kink-header">The purpose of this questionnaire is to share your kinks with your partner.</span>
+            <div class="kink-text">
             </p><p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
             </p><p>The information from your survey is stored locally on your device. 
             </p><p>No information is store on any servers. There is no tracking on this page.
+            </div>
          </p>
         </div>
 
