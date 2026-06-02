@@ -987,7 +987,7 @@ export default function QuestionnaireApp() {
            <li> 2 - Soft Limit - No desire to do this activity and but may permit if partner really wanted to do it </li>
            <li> 3 - Willing do do this activity but has no special appeal to you </li>
            <li> 4 - You like doing this activity and would like to experience it on a regular basis </li>
-           <li> 5 - Is a wild turn-on for you and you would like it as often as possible <li>
+           <li> 5 - Is a wild turn-on for you and you would like it as often as possible </li>
          </ul>
           </p><p></p>
           <p>
