@@ -982,7 +982,7 @@ export default function QuestionnaireApp() {
           </h1>
           <p className="text-slate-600 text-sm md:text-base">
             Rate each item from:
-	 <ul>
+	 <ul style={{ text-align: left;list-style-type: disc;}}>
            <li> 1 - Hard Limit - absolulely not under any circumstances</li>
            <li> 2 - Soft Limit - No desire to do this activity and but may permit if partner really wanted to do it </li>
            <li> 3 - Willing do do this activity but has no special appeal to you </li>
