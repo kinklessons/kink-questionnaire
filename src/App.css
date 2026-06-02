@@ -182,3 +182,7 @@
     border-right-color: var(--border);
   }
 }
+ul {
+   list-style-type: disc;
+   text-align: left;
+}
