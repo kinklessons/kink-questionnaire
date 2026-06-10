@@ -176,7 +176,7 @@ export default function QuestionnaireApp() {
             Shared Kink Questionnaire
           </h1>
 
-          <p></p>
+          <p>
             <div class="kink-header">Rate each item from:</div>
 	 <ul class="kink-list">
            <li> 1 - Hard Limit - absolulely not under any circumstances</li>
