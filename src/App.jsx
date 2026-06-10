@@ -241,6 +241,12 @@ const collapseAllCategories = () => {
             <p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
             </p><p>The information from your survey is stored locally on your device. 
             </p><p>No information is store on any servers. There is no tracking on this page.</p>
+            <div className="flex justify-center"> 
+                    <Button type="button" variant="outline" className="bg-purple-600 hover:bg-purple-700 text-white" 
+                    onClick={() => window.open("https://kinklessons.github.io/compare-questionnaire/", "_blank")}>
+                    Compare Surveys
+                  </button>
+            </div>
             </div>
         </div>
         {/* NAME INPUT */}
