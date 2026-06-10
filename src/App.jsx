@@ -172,6 +172,26 @@ export default function QuestionnaireApp() {
     [category]: prev[category] === false ? true : !prev[category],
   }));
   };
+  const expandAllCategories = () => {
+  const expanded = {};
+
+  Object.keys(groupedQuestions).forEach((category) => {
+    expanded[category] = true;
+  });
+
+  setOpenCategories(expanded);
+};
+
+const collapseAllCategories = () => {
+  const collapsed = {};
+
+  Object.keys(groupedQuestions).forEach((category) => {
+    collapsed[category] = false;
+  });
+
+  setOpenCategories(collapsed);
+};
+
   // ----------------------------
   // Score Calc
   // ----------------------------
@@ -232,7 +252,27 @@ export default function QuestionnaireApp() {
               placeholder="Enter your name"
             />
 
+<div className="flex gap-2 flex-wrap">
+  <Button
+    type="button"
+    variant="outline"
+    onClick={expandAllCategories}
+  >
+    Expand All
+  </Button>
+
+  <Button
+    type="button"
+    variant="outline"
+    onClick={collapseAllCategories}
+  >
+    Collapse All
+  </Button>
+</div>
+
+
             {/* QUESTIONS */}
+
             <div className="space-y-10">
 
               {Object.entries(groupedQuestions).map(([category, items]) => (
