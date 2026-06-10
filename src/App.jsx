@@ -180,10 +180,11 @@ export default function QuestionnaireApp() {
 
   Object.entries(groupedQuestions).forEach(([category, items]) => {
     const total = items.reduce((sum, item) => {
-      return sum + (answers[item.id] ?? 1);
-    }, 0);
+      const rating = answers[item.id] ?? 1;
+      return sum + (rating - 1);
+  }, 0);
 
-    const max = items.length * 5;
+    const max = items.length * 4;
 
     result[category] = Math.round((total / max) * 100);
   });
