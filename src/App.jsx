@@ -172,11 +172,11 @@ export default function QuestionnaireApp() {
 
         {/* HEADER */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}
+          <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}>
             Shared Kink Questionnaire
           </h1>
 
-          <p>
+          <p></p>
             <div class="kink-header">Rate each item from:</div>
 	 <ul class="kink-list">
            <li> 1 - Hard Limit - absolulely not under any circumstances</li>
@@ -193,7 +193,7 @@ export default function QuestionnaireApp() {
             </p><p>The information from your survey is stored locally on your device. 
             </p><p>No information is store on any servers. There is no tracking on this page.</p>
             </div>
-
+        </div>
         {/* NAME INPUT */}
         <Card className="bg-white border border-slate-200 rounded-3xl shadow-xl">
           <CardContent className="p-6 space-y-6">
