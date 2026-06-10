@@ -6,10 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Copy, Check } from "lucide-react";
 
 import questionsV3 from "@/questionnaires/v3.json";
+import deleteList from "./questionnaires/delete.json";
 
 const STORAGE_KEY = "kink-questionnaire-data";
 const STORAGE_VERSION = "3.0";
 
+const deletedIds = new Set(
+  deleteList.map(item => item.id)
+);
+const filteredQuestions = questionsV3.filter(
+  q => !deletedIds.has(q.id)
+);
 function encodeAnswers(obj) {
   return btoa(JSON.stringify(obj));
 }
@@ -38,8 +45,8 @@ export default function QuestionnaireApp() {
   // ACTIVE QUESTIONS (must come first)
   // ----------------------------
   const activeQuestions = useMemo(() => {
-    if (qversion === "3.0") return questionsV3;
-    return questionsV3;
+    if (qversion === "3.0") return filteredQuestions;
+    return filteredQuestions;
   }, [qversion]);
 
   // ----------------------------
