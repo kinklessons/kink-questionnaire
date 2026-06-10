@@ -245,7 +245,7 @@ const collapseAllCategories = () => {
                     <Button type="button" variant="outline" className="bg-purple-600 hover:bg-purple-700 text-white" 
                     onClick={() => window.open("https://kinklessons.github.io/compare-questionnaire/", "_blank")}>
                     Compare Surveys
-                  </button>
+                  </Button>
             </div>
             </div>
         </div>
