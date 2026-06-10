@@ -316,6 +316,9 @@ const collapseAllCategories = () => {
                           <div className="absolute left-0 top-full mt-2 w-72 p-3 text-xs text-white bg-slate-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none">
                             {item.Definition}
                           </div>
+                          <div className="text-lg font-bold min-w-[24px] text-right text-indigo-600">
+                           {answers[key] ?? 1}
+                          </div>
                         </div>
 
                         {/* SLIDER */}
