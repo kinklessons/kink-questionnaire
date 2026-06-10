@@ -5,7 +5,7 @@ import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Copy, Check } from "lucide-react";
 
-import questionsV3 from "@/data/questionnaires/v3.json";
+import questionsV3 from "@/questionnaires/v3.json";
 
 const STORAGE_KEY = "kink-questionnaire-data";
 const STORAGE_VERSION = "3.0";
