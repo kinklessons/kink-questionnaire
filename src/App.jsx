@@ -32,6 +32,7 @@ export default function QuestionnaireApp() {
   const [name, setName] = useState("");
   const [copied, setCopied] = useState(false);
   const [initialized, setInitialized] = useState(false);
+  const [openCategories, setOpenCategories] = useState({});
 
   // ----------------------------
   // ACTIVE QUESTIONS (must come first)
@@ -162,6 +163,33 @@ export default function QuestionnaireApp() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  // ----------------------------
+  // Toggle Function
+  // ----------------------------
+  const toggleCategory = (category) => {
+  setOpenCategories((prev) => ({
+    ...prev,
+    [category]: prev[category] === false ? true : !prev[category],
+  }));
+  };
+  // ----------------------------
+  // Score Calc
+  // ----------------------------
+  const categoryScores = useMemo(() => {
+  const result = {};
+
+  Object.entries(groupedQuestions).forEach(([category, items]) => {
+    const total = items.reduce((sum, item) => {
+      return sum + (answers[item.id] ?? 1);
+    }, 0);
+
+    const max = items.length * 5;
+
+    result[category] = Math.round((total / max) * 100);
+  });
+
+  return result;
+  }, [groupedQuestions, answers]);
 
   // ----------------------------
   // RENDER
@@ -210,14 +238,26 @@ export default function QuestionnaireApp() {
                 <div key={category} className="space-y-4">
 
                   {/* CATEGORY HEADER */}
-                  <div className="pt-4 pb-2 border-b border-slate-300">
+                  <div
+                      className="pt-4 pb-2 border-b border-slate-300 flex items-center justify-between cursor-pointer"
+                      onClick={() => toggleCategory(category)}
+                  >
+                  <div className="flex items-center gap-3">
                     <h2 className="text-lg font-bold text-slate-800" style={{ color: "#000000" }}>
                       {category}
                     </h2>
+                    <span className="text-sm text-slate-500">
+                      {categoryScores[category]}%
+                    </span>
                   </div>
+                  <div className="text-sm text-slate-500">
+                    {openCategories[category] === false ? "▼" : "▲"}
+                  </div>
+                </div>
 
                   {/* ITEMS */}
-                  {items.map((item) => {
+                  {openCategories[category] !== false && (
+                   items.map((item) => {
                     const key = item.id;
 
                     return (
