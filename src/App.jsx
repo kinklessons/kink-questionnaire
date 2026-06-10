@@ -293,7 +293,8 @@ export default function QuestionnaireApp() {
                         </div>
                       </div>
                     );
-                  })}
+                  })
+                  )}
                 </div>
               ))}
 
