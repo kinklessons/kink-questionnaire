@@ -172,7 +172,7 @@ export default function QuestionnaireApp() {
 
         {/* HEADER */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}>
+          <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}
             Shared Kink Questionnaire
           </h1>
 
