@@ -172,22 +172,27 @@ export default function QuestionnaireApp() {
 
         {/* HEADER */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-black">
+          <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}>
             Shared Kink Questionnaire
           </h1>
 
-          <div className="kink-header">
-            Rate each item from:
-          </div>
-
-          <ul className="kink-list">
-            <li>1 - Hard Limit</li>
-            <li>2 - Soft Limit</li>
-            <li>3 - Neutral</li>
-            <li>4 - Enjoy</li>
-            <li>5 - Strong desire</li>
-          </ul>
-        </div>
+          <p>
+            <div class="kink-header">Rate each item from:</div>
+	 <ul class="kink-list">
+           <li> 1 - Hard Limit - absolulely not under any circumstances</li>
+           <li> 2 - Soft Limit - No desire to do this activity and but may permit if partner really wanted to do it </li>
+           <li> 3 - Willing do do this activity but has no special appeal to you </li>
+           <li> 4 - You like doing this activity and would like to experience it on a regular basis </li>
+           <li> 5 - Is a wild turn-on for you and you would like it as often as possible </li>
+         </ul>
+          </p><p></p>
+          <p>
+            <span class="kink-header">The purpose of this questionnaire is to share your kinks with your partner.</span></p>
+            <div class="kink-text">
+            <p>After filling out the questionnaire in its entirety you will be given a link to copy below to share with your partner(s). 
+            </p><p>The information from your survey is stored locally on your device. 
+            </p><p>No information is store on any servers. There is no tracking on this page.</p>
+            </div>
 
         {/* NAME INPUT */}
         <Card className="bg-white border border-slate-200 rounded-3xl shadow-xl">
@@ -206,7 +211,7 @@ export default function QuestionnaireApp() {
 
                   {/* CATEGORY HEADER */}
                   <div className="pt-4 pb-2 border-b border-slate-300">
-                    <h2 className="text-lg font-bold text-slate-800">
+                    <h2 className="text-lg font-bold text-slate-800" style={{ color: "#000000" }}>
                       {category}
                     </h2>
                   </div>
@@ -222,7 +227,7 @@ export default function QuestionnaireApp() {
                         <div className="relative group">
                           <h3
                             className="text-sm md:text-base font-medium text-black cursor-help"
-                            title={item.Definition}
+                            title={item.Definition}  style={{ color: "#000000" }}
                           >
                             {item.Question}
                           </h3>
