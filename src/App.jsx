@@ -330,17 +330,19 @@ const collapseAllCategories = () => {
 
                         {/* QUESTION + HOVER */}
                         <div className="relative group">
+                         <div className="flex items-start justify-between gap-4">
                           <h3
                             className="text-sm md:text-base font-medium text-black cursor-help"
                             title={item.Definition}  style={{ color: "#000000" }}
                           >
-                            {item.Question}   
+                            {item.Question}
+                          </h3>
                             <button onClick={() => toggleDefinition(item.id)}
                                className="text-xs text-blue-600 whitespace-nowrap"
                               >
                                {openDefinitions[item.id] ? "Hide info" : "What is this?"}
                             </button>
-                          </h3>
+                         </div>
 
                           <div className="absolute left-0 top-full mt-2 w-72 p-3 text-xs text-white bg-slate-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-50 pointer-events-none">
                             {item.Definition}
