@@ -161,7 +161,7 @@ export default function QuestionnaireApp() {
     const total = values.reduce((sum, v) => sum + Number(v), 0);
 
     return Math.round(
-      (total / (activeQuestions.length * 5)) * 100
+      (total / (activeQuestions.length * 4)) * 100
     );
   }, [answers, activeQuestions]);
 
