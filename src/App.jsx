@@ -160,9 +160,12 @@ export default function QuestionnaireApp() {
 
     const total = values.reduce((sum, v) => sum + Number(v), 0);
 
-    return Math.round(
-      (total / (activeQuestions.length * 4)) * 100
-    );
+    const max = activeQuestions.length * 5;
+    const min = activeQuestions.length * 1;
+
+    const score = ((total - min) / (max - min)) * 100;
+
+    return Math.round(score);
   }, [answers, activeQuestions]);
 
   const copyLink = async () => {
