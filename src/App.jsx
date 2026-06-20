@@ -40,7 +40,7 @@ export default function QuestionnaireApp() {
   const [copied, setCopied] = useState(false);
   const [initialized, setInitialized] = useState(false);
   const [openCategories, setOpenCategories] = useState({});
-
+  const [openDefinitions, setOpenDefinitions] = useState({});
   // ----------------------------
   // ACTIVE QUESTIONS (must come first)
   // ----------------------------
@@ -218,7 +218,17 @@ const collapseAllCategories = () => {
 
   return result;
   }, [groupedQuestions, answers]);
+  // ----------------------------
+  // Toggle Definitions
+  // ----------------------------
+  const toggleDefinition = (id) => {
+  setOpenDefinitions((prev) => ({
+    ...prev,
+    [id]: !prev[id],
+  }));
+  };
 
+  
   // ----------------------------
   // RENDER
   // ----------------------------
@@ -332,6 +342,16 @@ const collapseAllCategories = () => {
                           </div>
                           <div className="text-lg font-bold min-w-[24px] text-right text-indigo-600">
                            {answers[key] ?? 1}
+                            <button onClick={() => toggleDefinition(item.id)}
+                               className="text-xs text-blue-600 whitespace-nowrap"
+                              >
+                               {openDefinitions[item.id] ? "Hide info" : "What is this?"}
+                            </button>
+                            {openDefinitions[item.id] && (
+                               <div className="text-xs text-slate-600 bg-slate-50 p-3 rounded-md">
+                              {item.Definition}
+                               </div>
+                             )}
                           </div>
                         </div>
 
