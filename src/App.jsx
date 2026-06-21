@@ -241,6 +241,9 @@ const collapseAllCategories = () => {
 
         {/* HEADER */}
         <div className="text-center space-y-2">
+          <div className="flex items-center gap-3 p-4">
+           <img src={logo} alt="KinkLessons" className="h-6 w-6 rounded-full" style={{ width: "200px", height: "200px" }} />
+         </div>
           <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}>
             Shared Kink Questionnaire
           </h1>
