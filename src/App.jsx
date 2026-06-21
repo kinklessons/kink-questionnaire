@@ -8,6 +8,8 @@ import { Copy, Check } from "lucide-react";
 import questionsV3 from "@/questionnaires/v3.json";
 import deleteList from "./questionnaires/delete.json";
 
+import logo from "@/assets/kinklessons-logo.png";
+
 const STORAGE_KEY = "kink-questionnaire-data";
 const STORAGE_VERSION = "3.0";
 
