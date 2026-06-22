@@ -245,7 +245,7 @@ const collapseAllCategories = () => {
         <div className="text-center space-y-2">
          <div className="p-6 max-w-3xl mx-auto">
           <div className="flex justify-center items-center gap-3 p-4">
-           <img src={logo} alt="KinkLessons" className="h-6 w-6 rounded-full" style={{ width: "200px", height: "200px" }} />
+           <a href="https://kinklessons.com/"><img src={logo} alt="KinkLessons" className="h-6 w-6 rounded-full" style={{ width: "200px", height: "200px" }} /></a>
          </div>
          </div>
           <h1 className="text-4xl font-bold tracking-tight text-black"  style={{ color: "#000000" }}>
